@@ -37,8 +37,8 @@ class Demorunner
                         studentService.Remove(target);
                         break;
                     case "4":
-                        int avarage = studentService.GetAvarage();
-                        Console.WriteLine($"Avarage grade: {avarage}");
+                        int  avarage = studentService.GetAvarage();
+                        Console.WriteLine ($" Avarage grade is : {avarage} ");
                         break;
                     case "5":
                         Console.WriteLine("Bye..");

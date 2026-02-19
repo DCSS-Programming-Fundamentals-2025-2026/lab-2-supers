@@ -9,6 +9,6 @@ public class Student
     }
     public override string ToString()
     {
-        return $" Name of the Student : {Name}| Year score : {Score}";
+        return $" Name of the Student : {Name} | Year score : {Score}";
     }
 }

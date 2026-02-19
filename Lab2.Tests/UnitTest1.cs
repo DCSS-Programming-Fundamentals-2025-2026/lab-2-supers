@@ -1,50 +1,118 @@
-﻿public class UnitTest1
+﻿using System;
+using Xunit;
+
+public class StudentServiceTests
 {
     private readonly Work work;
     private readonly StudentService service;
 
-
-    public UnitTest1()
+    public StudentServiceTests()
     {
+        //Arrange
         work = new Work();
         service = new StudentService(work);
     }
 
     [Fact]
-    public void CountTest()
+    public void EdgeCaseCheck()
     {
-        service.AddStudent("Zahar", 100);
-        Assert.Equal(1, work.Count);
+        // Arrange
+        int initialCount = work.Count;
 
-        Assert.Throws<ArgumentException>(() => service.AddStudent("masha", 101));
-    }
-
-
-    [Fact]
-    public void EdgeTest()
-    {
+        // Act
         service.AddStudent("MinStudent", 0);
         service.AddStudent("MaxStudent", 100);
-        Assert.Equal(2, work.Count);
+
+        // Assert
+        Assert.Equal(initialCount + 2, work.Count);
     }
+
     [Fact]
-    public void DeleteCheck()
+    public void InvalidGradeStudentCheck()
     {
-        service.AddStudent("zahar", 90);
-        service.AddStudent("ivan", 80);
-        service.AddStudent("masha", 40);
+        // Arrange
+        service.AddStudent("Zahar", 100);
+        int countBefore = work.Count;
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => service.AddStudent("Masha", 101));
+        Assert.Equal(countBefore, work.Count); 
+    }
+
+    [Fact]
+    public void EmptyNameStudentCheck()
+    {
+        // Arrange
+        int countBefore = work.Count;
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => service.AddStudent("", 50));
+        Assert.Equal(countBefore, work.Count);
+    }
+
+    [Fact]
+    public void RemoveStudentCheck()
+    {
+        // Arrange
+        service.AddStudent("Zahar", 90);
+        service.AddStudent("Ivan", 80);
+        service.AddStudent("Masha", 40);
+
+        // Act
         service.Remove(1);
+
+        // Assert
         Assert.Equal(2, work.Count);
-        string check = service.GetName(1);
-        Assert.Equal("masha", check);
+        Assert.Equal("Masha", service.GetName(1)); 
     }
+
     [Fact]
-    public void AvarageCheck()
+    public void GetAverageCalculatesCorrectly()
     {
-        service.AddStudent("zahar", 100);
-        service.AddStudent("ivan", 50);
-        int avarage = service.GetAvarage();
-        Assert.Equal(75, avarage);
+        // Arrange
+        service.AddStudent("Zahar", 100);
+        service.AddStudent("Ivan", 50);
+
+        // Act
+        int average = service.GetAvarage();
+
+        // Assert
+        Assert.Equal(75, average);
+    }
+
+    [Fact]
+    public void IntegrationTest___AddDeleteGetAverage()
+    {
+        // Arrange
+        service.AddStudent("Zahar", 100);
+        service.AddStudent("Oleg", 60);
+        service.AddStudent("Anna", 40);
+
+        // Act 
+        service.Remove(0);
+        int finalAverage = service.GetAvarage();
+
+        // Assert 
+        Assert.Equal(2, work.Count);
+        Assert.Equal(50, finalAverage);
+    }
+
+    [Fact]
+    public void InvalidGradeAndAvarageTest()
+    {
+        // Arrange
+        service.AddStudent("Zahar", 100);
+
+        // Act
+        Assert.Throws<ArgumentException>(() => service.AddStudent("Error", -5));
+        service.AddStudent("Ivan", 50);
+        int average = service.GetAvarage();
+
+        // Assert
+        Assert.Equal(2, work.Count);
+        Assert.Equal(75, average);
     }
 }
+
+
 

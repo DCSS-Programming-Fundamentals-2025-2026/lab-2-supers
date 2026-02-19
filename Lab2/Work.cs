@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 public class Work
 {
@@ -32,6 +33,10 @@ public class Work
     }
     public int Avarage()
     {
+        if (count == 0)
+        {
+            return -1;
+        }
         int sum=0;
         for(int i = 0; i < count; i++)
         {
@@ -41,6 +46,10 @@ public class Work
         return avarage;
     }
 }
+        
+        
+        
+        
 
 
 
