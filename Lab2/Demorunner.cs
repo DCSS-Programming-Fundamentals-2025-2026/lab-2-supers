@@ -12,9 +12,11 @@ class Demorunner
             {
                 Console.WriteLine("Add Student -- 1");
                 Console.WriteLine("List of the students -- 2");
-                Console.WriteLine(" Delete student -- 3");
+                Console.WriteLine(" Delete student -- 3(RemoveAt)");
                 Console.WriteLine("Avarage semester score -- 4");
-                Console.WriteLine("Exit -- 5");
+                Console.WriteLine("Change the student by the certain index -- 5 (SetAt)");
+                Console.WriteLine("Sort student by grades -- 6 (IComparable)");
+                Console.WriteLine("Exit -- 0");
                 string choise = Console.ReadLine();
                 switch (choise)
                 {
@@ -28,7 +30,6 @@ class Demorunner
                         break;
                     case "2":
                         studentService.ShowList();
-
                         break;
                     case "3":
                         studentService.ShowList();
@@ -37,12 +38,23 @@ class Demorunner
                         studentService.Remove(target);
                         break;
                     case "4":
-                        int  avarage = studentService.GetAvarage();
-                        Console.WriteLine ($" Avarage grade is : {avarage} ");
+                        int avarage = studentService.GetAvarage();
+                        Console.WriteLine($" Avarage grade is : {avarage} ");
                         break;
-                    case "5":
+                    case "0":
                         Console.WriteLine("Bye..");
                         return;
+                    case "6":
+                        studentService.ArraySort();
+                        break;
+                    case "5":
+                        int index = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Name:");
+                        string name1 = Console.ReadLine();
+                        Console.WriteLine("Score:");
+                        int score1 = int.Parse(Console.ReadLine());
+                        studentService.SetStudent(index, name1,score1);
+                        break;
                     default:
                         Console.WriteLine("Uncknown command");
                         break;
@@ -58,6 +70,9 @@ class Demorunner
         }
     }
 }
+
+
+
 
 
 

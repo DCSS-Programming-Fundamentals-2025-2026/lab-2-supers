@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -20,7 +21,7 @@ public class Work
         students[count - 1] = null;
         count--;
     }
-    public void Show()
+    public void  Show()
     {
         for (int i = 0; i < count; i++)
         {
@@ -45,6 +46,16 @@ public class Work
         int avarage =sum/count;
         return avarage;
     }
+    public void Sort()
+    {
+        Array.Sort(students,0,count);
+        Show();
+    }
+    public void SetAt(int index,string name,int score)
+    {
+        students[index]=new Student(name,score);
+    }
+   
 }
         
         

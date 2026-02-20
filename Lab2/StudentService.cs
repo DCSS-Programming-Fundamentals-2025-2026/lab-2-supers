@@ -7,11 +7,11 @@ public class StudentService
     }
     public void AddStudent(string name, int score)
     {
-        if (work.Count>200)
+        if (work.Count > 200)
         {
             throw new IndexOutOfRangeException("List of the student is already filled");
         }
-      else  if (string.IsNullOrWhiteSpace(name))
+        else if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("You wrote an empty space ");
         }
@@ -35,22 +35,42 @@ public class StudentService
     }
     public string GetName(int index)
     {
-        if(index <0||index >=work.Count)
+        if (index < 0 || index >= work.Count)
         {
             throw new IndexOutOfRangeException("Student does not exists");
         }
         return work.Get(index);
     }
-    public int  GetAvarage()
+    public int GetAvarage()
     {
         int avarage = work.Avarage();
         if (avarage == -1)
         {
             throw new InvalidOperationException("No student had been added");
         }
-        return  avarage;
+        return avarage;
+    }
+    public void ArraySort()
+    {
+        work.Sort();
+    }
+    public void SetStudent(int index, string name, int score)
+    {
+        if (index < 0 || index >= work.Count)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        else if (score<0||score>100)
+        {
+throw new IndexOutOfRangeException();
+        }
+        work.SetAt(index, name, score);
     }
 }
+
+
+
+
 
 
 
