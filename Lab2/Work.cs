@@ -1,8 +1,6 @@
 using System.Collections;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-public class Work
+using Lab2.Comparers;
+public class Work : IEnumerable
 {
     private Student[] students = new Student[200];
     private int count = 0;
@@ -20,13 +18,6 @@ public class Work
         }
         students[count - 1] = null;
         count--;
-    }
-    public void Show()
-    {
-        for(int i = 0; i < count; i++)
-        {
-            Console.WriteLine(students[i]);
-        }
     }
 
     public string Get(int index)
@@ -50,7 +41,6 @@ public class Work
     public void Sort()
     {
         Array.Sort(students, 0, count);
-        Show();
     }
     public void SetAt(int index, string name, int score)
     {
@@ -60,8 +50,20 @@ public class Work
     {
         return students[index];
     }
+    public IEnumerator GetEnumerator()
+    {
+        return new WorkEnumerator(this);
+    }
+    public void SortByName()
+    {
+        Array.Sort(students, 0, count, new StudentNameComparer());
+    }
 }
-    
+
+
+
+
+
 
 
 

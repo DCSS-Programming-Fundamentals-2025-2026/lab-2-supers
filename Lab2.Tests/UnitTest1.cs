@@ -145,6 +145,33 @@ public class StudentServiceTests
         // Assert
         Assert.Equal("Masha", service.GetName(0));
     }
+    [Fact]
+    public void IComparableCheck()
+    {
+        //Arrange
+        service.AddStudent("Zahar", 90);
+        service.AddStudent("Ivan", 100);
+
+        //Act
+
+        service.ArraySort();
+
+        Assert.Equal("Zahar", service.GetName(1));
+    }
+    [Fact]
+    public void ComparerCheck()
+    {
+        //Arrange
+        service.AddStudent("Anton", 90);
+        service.AddStudent("Ivan", 80);
+
+        //Act 
+
+        service.SortByName();
+        //Assert
+
+        Assert.Equal("Ivan", service.GetName(1));
+    }
 }
 
 

@@ -9,11 +9,11 @@ public class StudentService
     {
         if (work.Count > 200)
         {
-            throw new IndexOutOfRangeException("List of the student is already filled");
+            throw new IndexOutOfRangeException("List of the students is already filled");
         }
         else if (string.IsNullOrWhiteSpace(name))
         {
-            throw new ArgumentException("You wrote an empty space ");
+            throw new ArgumentException("You wrote a white space ");
         }
         else if (score < 0 || score > 100)
         {
@@ -29,10 +29,7 @@ public class StudentService
         }
         work.Delete(index);
     }
-    public void ShowList()
-    {
-        work.Show();
-    }
+
     public string GetName(int index)
     {
         if (index < 0 || index >= work.Count)
@@ -43,7 +40,6 @@ public class StudentService
     }
     public int GetAvarage()
     {
-        
         int avarage = work.Avarage();
         if (avarage == -1)
         {
@@ -61,9 +57,9 @@ public class StudentService
         {
             throw new ArgumentException();
         }
-        else if (score<0||score>100)
+        else if (score < 0 || score > 100)
         {
-throw new IndexOutOfRangeException();
+            throw new IndexOutOfRangeException();
         }
         work.SetAt(index, name, score);
     }
@@ -73,9 +69,27 @@ throw new IndexOutOfRangeException();
         {
             throw new IndexOutOfRangeException();
         }
-       return work.GetAt(index);
+        return work.GetAt(index);
+    }
+    public void SortByName()
+    {
+        if (work.Count == 0)
+        {
+            throw new ArgumentException("No student added yet");
+        }
+        work.SortByName();
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
