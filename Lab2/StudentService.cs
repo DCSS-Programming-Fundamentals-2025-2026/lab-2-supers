@@ -43,6 +43,7 @@ public class StudentService
     }
     public int GetAvarage()
     {
+        
         int avarage = work.Avarage();
         if (avarage == -1)
         {
@@ -58,13 +59,21 @@ public class StudentService
     {
         if (index < 0 || index >= work.Count)
         {
-            throw new IndexOutOfRangeException();
+            throw new ArgumentException();
         }
         else if (score<0||score>100)
         {
 throw new IndexOutOfRangeException();
         }
         work.SetAt(index, name, score);
+    }
+    public Student GetAt(int index)
+    {
+        if (index < 0 || index >= work.Count)
+        {
+            throw new IndexOutOfRangeException();
+        }
+       return work.GetAt(index);
     }
 }
 

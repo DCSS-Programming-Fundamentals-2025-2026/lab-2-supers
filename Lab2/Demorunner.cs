@@ -16,6 +16,7 @@ class Demorunner
                 Console.WriteLine("Avarage semester score -- 4");
                 Console.WriteLine("Change the student by the certain index -- 5 (SetAt)");
                 Console.WriteLine("Sort student by grades -- 6 (IComparable)");
+                Console.WriteLine("Show Student by index (Get at)-- 7");
                 Console.WriteLine("Exit -- 0");
                 string choise = Console.ReadLine();
                 switch (choise)
@@ -54,6 +55,12 @@ class Demorunner
                         Console.WriteLine("Score:");
                         int score1 = int.Parse(Console.ReadLine());
                         studentService.SetStudent(index, name1,score1);
+                        break;
+                        case "7":
+                        Console.WriteLine("Index of the wanted student");
+                        int index1 =int.Parse(Console.ReadLine());
+                        Student student =studentService.GetAt(index1);
+                        Console.WriteLine(student);
                         break;
                     default:
                         Console.WriteLine("Uncknown command");

@@ -8,7 +8,7 @@ public class StudentServiceTests
 
     public StudentServiceTests()
     {
-        //Arrange
+        // Arrange
         work = new Work();
         service = new StudentService(work);
     }
@@ -36,7 +36,7 @@ public class StudentServiceTests
 
         // Act & Assert
         Assert.Throws<ArgumentException>(() => service.AddStudent("Masha", 101));
-        Assert.Equal(countBefore, work.Count); 
+        Assert.Equal(countBefore, work.Count);
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public class StudentServiceTests
 
         // Assert
         Assert.Equal(2, work.Count);
-        Assert.Equal("Masha", service.GetName(1)); 
+        Assert.Equal("Masha", service.GetName(1));
     }
 
     [Fact]
@@ -111,6 +111,39 @@ public class StudentServiceTests
         // Assert
         Assert.Equal(2, work.Count);
         Assert.Equal(75, average);
+    }
+
+    [Fact]
+    public void GetCheckInvalidindex()
+    {
+        // Arrange
+        service.AddStudent("Ivan", 90);
+
+        // Act & Assert
+        Assert.Throws<IndexOutOfRangeException>(() => service.GetAt(1));
+    }
+
+    [Fact]
+    public void RemoveCheckInvalidindex()
+    {
+        // Arrange
+        service.AddStudent("Ivan", 90);
+
+        // Act & Assert
+        Assert.Throws<IndexOutOfRangeException>(() => service.Remove(1));
+    }
+
+    [Fact]
+    public void SetAtCheck()
+    {
+        // Arrange
+        service.AddStudent("Zahar", 40);
+
+        // Act
+        service.SetStudent(0, "Masha", 50);
+
+        // Assert
+        Assert.Equal("Masha", service.GetName(0));
     }
 }
 

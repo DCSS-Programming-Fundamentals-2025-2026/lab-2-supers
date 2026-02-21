@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 
 public class Work
 {
-   private Student[] students = new Student[200];
-  private  int count = 0;
+    private Student[] students = new Student[200];
+    private int count = 0;
     public int Count => count;
-   public void Add(string name, int score)
+    public void Add(string name, int score)
     {
         students[count] = new Student(name, score);
         count++;
@@ -21,13 +21,14 @@ public class Work
         students[count - 1] = null;
         count--;
     }
-    public void  Show()
+    public void Show()
     {
-        for (int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++)
         {
-            Console.WriteLine($" Index {i}: Achievements -- {students[i]}");
+            Console.WriteLine(students[i]);
         }
     }
+
     public string Get(int index)
     {
         return students[index].Name;
@@ -38,29 +39,35 @@ public class Work
         {
             return -1;
         }
-        int sum=0;
-        for(int i = 0; i < count; i++)
+        int sum = 0;
+        for (int i = 0; i < count; i++)
         {
-            sum+=students[i].Score;
+            sum += students[i].Score;
         }
-        int avarage =sum/count;
+        int avarage = sum / count;
         return avarage;
     }
     public void Sort()
     {
-        Array.Sort(students,0,count);
+        Array.Sort(students, 0, count);
         Show();
     }
-    public void SetAt(int index,string name,int score)
+    public void SetAt(int index, string name, int score)
     {
-        students[index]=new Student(name,score);
+        students[index] = new Student(name, score);
     }
-   
+    public Student GetAt(int index)
+    {
+        return students[index];
+    }
 }
-        
-        
-        
-        
+    
+
+
+
+
+
+
 
 
 
