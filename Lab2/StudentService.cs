@@ -5,6 +5,7 @@ public class StudentService
     {
         this.work = work;
     }
+
     public void AddStudent(string name, int score)
     {
         if (work.Count > 200)
@@ -21,6 +22,7 @@ public class StudentService
         }
         work.Add(name, score);
     }
+
     public void Remove(int index)
     {
         if (index < 0 || index >= work.Count)
@@ -38,6 +40,7 @@ public class StudentService
         }
         return work.Get(index);
     }
+
     public int GetAvarage()
     {
         int avarage = work.Avarage();
@@ -47,10 +50,12 @@ public class StudentService
         }
         return avarage;
     }
+
     public void ArraySort()
     {
         work.Sort();
     }
+
     public void SetStudent(int index, string name, int score)
     {
         if (index < 0 || index >= work.Count)
@@ -63,6 +68,7 @@ public class StudentService
         }
         work.SetAt(index, name, score);
     }
+
     public Student GetAt(int index)
     {
         if (index < 0 || index >= work.Count)
@@ -71,6 +77,7 @@ public class StudentService
         }
         return work.GetAt(index);
     }
+    
     public void SortByName()
     {
         if (work.Count == 0)

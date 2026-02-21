@@ -10,6 +10,7 @@ public class Work : IEnumerable
         students[count] = new Student(name, score);
         count++;
     }
+
     public void Delete(int index)
     {
         for (int i = index; i < count - 1; i++)
@@ -42,6 +43,7 @@ public class Work : IEnumerable
     {
         Array.Sort(students, 0, count);
     }
+
     public void SetAt(int index, string name, int score)
     {
         students[index] = new Student(name, score);
@@ -50,10 +52,12 @@ public class Work : IEnumerable
     {
         return students[index];
     }
+
     public IEnumerator GetEnumerator()
     {
         return new WorkEnumerator(this);
     }
+    
     public void SortByName()
     {
         Array.Sort(students, 0, count, new StudentNameComparer());

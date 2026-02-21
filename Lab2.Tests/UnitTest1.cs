@@ -134,6 +134,7 @@ public class StudentServiceTests
     }
 
     [Fact]
+    
     public void SetAtCheck()
     {
         // Arrange
@@ -146,6 +147,7 @@ public class StudentServiceTests
         Assert.Equal("Masha", service.GetName(0));
     }
     [Fact]
+
     public void IComparableCheck()
     {
         //Arrange
@@ -158,6 +160,7 @@ public class StudentServiceTests
 
         Assert.Equal("Zahar", service.GetName(1));
     }
+
     [Fact]
     public void ComparerCheck()
     {

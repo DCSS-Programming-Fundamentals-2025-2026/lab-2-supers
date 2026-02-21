@@ -7,10 +7,12 @@ public class Student : IComparable
         Name = name;
         Score = score;
     }
+
     public override string ToString()
     {
         return $" Name of the Student : {Name} | Year score : {Score}";
     }
+    
     public int CompareTo(object? other)
     {
         Student student = other as Student;

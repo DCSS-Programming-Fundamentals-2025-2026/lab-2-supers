@@ -1,6 +1,6 @@
 using System.Collections;
 namespace Lab2.Comparers;
-using Lab2;
+
 public class StudentNameComparer : IComparer
 {
     public int Compare(object x, object y)
