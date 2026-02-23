@@ -20,6 +20,7 @@ class Demorunner
                 Console.WriteLine("Sort be Name(StudentNameComparer) -- 8");
                 Console.WriteLine("Exit -- 0");
                 string choise = Console.ReadLine();
+                
                 switch (choise)
                 {
                     case "1":
